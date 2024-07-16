@@ -68,7 +68,7 @@ class FacesDataset(torch.utils.data.Dataset):
         image = image.type(torch.float32)
         uniform = torch.rand(1) * (self.maxPSNR - self.minPSNR) + torch.FloatTensor([self.minPSNR])
         constant = torch.FloatTensor([10.0])
-        level = (constant**(uniform/constant))/(image.type(torch.float32).mean().item() + 1e-5)
+        level = (constant**(uniform/constant))
         #print(image.dtype, self.amplification_factor.dtype)
         image *= self.amplification_factor
         ImageNoise = torch.poisson((image/(image.type(torch.float32).mean().item())) * level)

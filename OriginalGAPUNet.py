@@ -330,8 +330,8 @@ class UNet(pl.LightningModule):
         return test_loss
     
     def configure_optimizers(self):
-        optimizer = optim.AdamW(self.parameters(), lr=1e-4)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10)
+        optimizer = optim.AdamW(self.parameters(), lr=2e-4)
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=4)
         
         return {
            'optimizer': optimizer,
